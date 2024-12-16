@@ -1,0 +1,49 @@
+questions = [
+    {
+        "type": "Prime Factors",
+        "numbers": [6, 30, 210, 2310],
+        "descriptions": [2, 3, 4, 5],
+        "instructions": "Match the following numbers with their unique number of prime factors:"
+    },
+    {
+        "type": "Capitals",
+        "numbers": ["France", "Japan", "India", "Australia"],
+        "descriptions": ["Paris", "Tokyo", "New Delhi", "Canberra"],
+        "instructions": "Match the following countries with their capitals:"
+    },
+    {
+        "type": "Logical Patterns",
+        "numbers": [2, 3, 5, 8],
+        "descriptions": ["First prime number", "Second prime number", "Third prime number", "Sum of first two Fibonacci numbers"],
+        "instructions": "Match the numbers with their logical descriptions:"
+    },
+    {
+        "type": "Animal Traits",
+        "numbers": ["Cheetah", "Elephant", "Kangaroo", "Hummingbird"],
+        "descriptions": ["Fastest land animal", "Largest land animal", "Animal that jumps", "Bird that hovers"],
+        "instructions": "Match the animals with their unique traits:"
+    }
+]
+
+for idx, question in enumerate(questions, 1):
+    print(f"\n{question['instructions']} (Question {idx}):")
+    match_pairs = {number: desc for number, desc in zip(question["numbers"], question["descriptions"])}
+
+    for i, number in enumerate(question["numbers"], 1):
+        print(f"{i}. {number}")
+
+    print("\nMatch the items with their descriptions:")
+
+    for number in question["numbers"]:
+        correct_desc = match_pairs[number]
+        print(f"\nItem: {number}")
+        print("Options:")
+        options = ['a', 'b', 'c', 'd']
+        for option, desc in zip(options, question["descriptions"]):
+            print(f"{option}. {desc}")
+
+        user_choice = input("Enter your choice (a, b, c, or d): ").lower()
+        if options.index(user_choice) == question["descriptions"].index(correct_desc):
+            print("Correct!")
+        else:
+            print("Incorrect. The correct answer is:", correct_desc)
